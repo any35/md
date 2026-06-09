@@ -1,0 +1,36 @@
+{
+  "name": "@md/converter",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CLI：将 Markdown 渲染为微信公众号 inline-style HTML（无头浏览器全保真，支持 Mermaid / KaTeX / PlantUML / Infographic / 代码高亮）",
+  "bin": {
+    "md2wx": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm run build:harness && pnpm run build:cli",
+    "build:harness": "node scripts/build-harness.mjs",
+    "build:cli": "vite build --config vite.cli.config.ts",
+    "dev": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "puppeteer": "^24.10.0"
+  },
+  "devDependencies": {
+    "@md/config": "workspace:*",
+    "@md/core": "workspace:*",
+    "@md/shared": "workspace:*",
+    "@types/node": "^25.9.1",
+    "commander": "^12.1.0",
+    "highlight.js": "^11.11.1",
+    "json5": "^2.2.3",
+    "juice": "^11.1.1",
+    "mathjax": "^3.2.2",
+    "tsx": "^4.22.4",
+    "typescript": "~6.0.3",
+    "vite": "^8.0.0"
+  }
+}

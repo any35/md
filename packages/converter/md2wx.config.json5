@@ -1,0 +1,94 @@
+// ============================================================================
+// md2wx 默认配置文件（JSON5：支持注释 / 尾逗号 / 单引号）
+//
+// 用法：  node dist/cli.js article.md -c md2wx.config.json5 -o out.html --no-sandbox
+// 优先级：命令行显式参数  >  本配置文件  >  程序内置默认
+//
+// 下面每一项都列出了【可选值】与【程序内置默认】；当前文件已按常用偏好设值。
+// 用不到的项可以整行删掉或注释掉（删掉即回落到“程序内置默认”）。
+// ============================================================================
+{
+  // —— 主题 ——
+  // 可选：'default'(经典) | 'grace'(优雅) | 'simple'(简洁)
+  // 内置默认：'default'
+  theme: 'default', // 经典
+
+  // —— 字体 ——
+  // 取 CSS 字体栈字符串。三个内置预设：
+  //   无衬线：'-apple-system-font,BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB , Microsoft YaHei UI , Microsoft YaHei ,Arial,sans-serif'
+  //   衬线  ："Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
+  //   等宽  ："Menlo, Monaco, 'Courier New', monospace"
+  // 内置默认：无衬线
+  fontFamily: '-apple-system-font,BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB , Microsoft YaHei UI , Microsoft YaHei ,Arial,sans-serif', // 无衬线
+
+  // —— 字号 ——
+  // 可选：'14px'(更小) | '15px'(稍小) | '16px'(推荐) | '17px'(稍大) | '18px'(更大)
+  // 内置默认：'16px'
+  fontSize: '15px', // 稍小
+
+  // —— 主题色 ——（也可填任意自定义 hex）
+  // 预设：经典蓝 '#0F4C81' | 翡翠绿 '#009874' | 活力橘 '#FA5151' | 柠檬黄 '#FECE00'
+  //       薰衣紫 '#92617E' | 天空蓝 '#55C9EA' | 玫瑰金 '#B76E79' | 橄榄绿 '#556B2F'
+  //       石墨黑 '#333333' | 雾烟灰 '#A9A9A9' | 樱花粉 '#FFB7C5'
+  // 内置默认：'#0F4C81'
+  primaryColor: '#0F4C81', // 经典蓝
+
+  // —— 代码块主题 ——
+  // 可选：highlight.js 的 80 种主题名之一，如 'github-dark' / 'atom-one-dark' /
+  //       'monokai' / 'vs2015' / 'xcode' / 'github' …（完整列表见 highlight.js styles）
+  // 内置默认：'github-dark'
+  codeTheme: 'github-dark',
+
+  // —— 图注来源 ——（图片下方的说明文字取自哪里）
+  // 可选：'title-alt'(title优先) | 'alt-title'(alt优先) | 'title'(只显示title)
+  //       | 'alt'(只显示alt) | 'filename'(文件名) | 'none'(不显示)
+  // 内置默认：'alt'
+  legend: 'alt', // 只显示 alt
+
+  // —— 按级标题样式 ——
+  // 每级可选：'default' | 'color-only'(主题色文字) | 'border-bottom'(下边框) | 'border-left'(左边框)
+  // 内置默认：全部 default（即不写或写 {}）
+  headingStyles: {
+    // h1: 'default',
+    // h2: 'border-left',
+    // h3: 'color-only',
+    // h4: 'default',
+    // h5: 'default',
+    // h6: 'default',
+  },
+
+  // —— 开关项 ——（true / false）
+  macCodeBlock: true, // Mac 风格代码块（红黄绿圆点）。内置默认：true
+  lineNumber: false, // 代码块显示行号。内置默认：false
+  cite: false, // 微信外链转为底部引用脚注。内置默认：false
+  indent: false, // 段落首行缩进。内置默认：false
+  justify: true, // 段落两端对齐。内置默认：false
+  dark: false, // 暗色模式渲染。内置默认：false
+  count: false, // 显示字数 / 阅读时间。内置默认：false
+
+  // —— 自定义 CSS ——（作用于 #output 作用域；相对路径相对“本配置文件目录”解析）
+  // 内置默认：无
+  // customCss: './my.css',
+
+  // —— 输出 ——
+  // fullDocument：true=输出独立 HTML 文档；false=仅输出可粘贴微信的内联片段。内置默认：false
+  fullDocument: false,
+  // output：输出文件路径（一般用命令行 -o 指定更灵活）。内置默认：<输入名>.html
+  // output: './out.html',
+
+  // —— 图表单独导出（可选）——
+  // exportDiagrams：导出目录；不设则不导出。内置默认：无
+  // exportDiagrams: './diagrams',
+  // diagramFormat：'svg' | 'png' | 'both'。内置默认：'svg'
+  diagramFormat: 'svg',
+  // diagramScale：PNG 缩放倍数。内置默认：2
+  diagramScale: 2,
+
+  // —— 浏览器（运行环境）——
+  // chrome：指定 Chrome/Chromium 可执行文件路径。内置默认：puppeteer 自带
+  // chrome: '/usr/bin/google-chrome',
+  // sandbox：false 等同命令行 --no-sandbox（容器/CI 常用）。内置默认：true
+  sandbox: true,
+  // timeout：渲染超时（毫秒）。内置默认：60000
+  timeout: 60000,
+}

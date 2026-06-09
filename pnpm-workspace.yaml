@@ -80,6 +80,7 @@ allowBuilds:
   core-js: true
   esbuild: true
   keytar: true
+  puppeteer: true
   sharp: true
   simple-git-hooks: true
   spawn-sync: true
