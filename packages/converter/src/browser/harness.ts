@@ -189,12 +189,15 @@ async function processClipboardContent(primaryColor: string, codeTheme: string):
     if (!parent)
       return
     const xmlns = parent.getAttribute(`xmlns`)
-    const style = parent.getAttribute(`style`)
-    if (!xmlns || !style)
+    const style = parent
+      .getAttribute(`style`)
+      ?.replace(/white-space:\s*nowrap;?/gi, ``)
+      .trim()
+    if (!xmlns)
       return
     const section = document.createElement(`section`)
     section.setAttribute(`xmlns`, xmlns)
-    section.setAttribute(`style`, style)
+    section.setAttribute(`style`, `${style ? `${style}; ` : ``}white-space: normal;`)
     section.innerHTML = parent.innerHTML
     const grand = parent.parentElement
     if (!grand)
